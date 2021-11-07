@@ -1,0 +1,84 @@
+.todo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #333;
+  padding: 10px;
+  width: 600px;
+  transition: transform .2s ease-in-out;
+
+  &:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    z-index: -1;
+    content: '';
+    color: #000 !important;
+    background: rgba(39, 246, 6, 0.4);
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1) ;
+  }
+
+  &.todoDone::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+
+  &:hover {
+    transform: scale(1.05) !important;
+    border-bottom: 1px solid #333;
+
+    & + * {
+      border-top: none;
+    }
+  }
+
+  &:last-child {
+    border-bottom: 1px solid #333;
+  }
+
+  &Info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  &Text {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  &EditInput {
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  &Date {
+    font-size: 12px;
+  }
+
+  &Buttons {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+    & > button {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+
+      & > svg > path {
+        transition: fill .2s ease-in-out;
+      }
+
+      &:hover > svg > path {
+        fill: #fff;
+      }
+    }
+  }
+}
